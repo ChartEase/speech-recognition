@@ -1,5 +1,4 @@
 var vosk = require('vosk')
-
 const fs = require("fs");
 var mic = require("mic");
 
@@ -25,10 +24,12 @@ var micInstance = mic({
 var micInputStream = micInstance.getAudioStream();
 
 micInputStream.on('data', data => {
-    if (rec.acceptWaveform(data))
+    if (rec.acceptWaveform(data)) {
         console.log(rec.result());
-    else
-        console.log(rec.partialResult());
+    } 
+    // else {
+    //     console.log(rec.partialResult());
+    // }
 });
 
 micInputStream.on('audioProcessExitComplete', function() {
